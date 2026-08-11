@@ -33,11 +33,20 @@ def hexadecimal_a_decimal(hexadecimal: str) -> int:
         sum += digito*16**i
     return sum
 
+def a_decimal(n: str, base: int):
+    if base != 2 and base != 16:
+        raise ValueError("a_decimal: solo bases 2 y 16 permitidas")
+
+    if base == 2:
+        return binario_a_decimal(n)
+    else:
+        return hexadecimal_a_decimal(n)
+    
 if __name__ == "__main__":
-    n = 214
+    n = 16
     binario = a_binario(n)
     hexadecimal = a_hexadecimal(n)
     print(binario)
-    print(binario_a_decimal(binario))
+    print(a_decimal(binario, 2))
     print(hexadecimal)
-    print(hexadecimal_a_decimal(hexadecimal))
+    print(a_decimal(hexadecimal, 16))
